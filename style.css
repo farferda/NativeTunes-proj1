@@ -8,9 +8,23 @@
 }
 
 #logo {
-	margin: 10px;
+	text-align: center;
 }
 
 .list-group-item active {
 	background-color: black;
+}
+
+body {
+	background-image: url(images/ipbrick_header.png)
+}
+
+.container1 {
+
+	text-align: center;
+	padding-top: 20px;
+}
+
+list-group-item {
+	background: red;
 }
