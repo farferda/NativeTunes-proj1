@@ -28,3 +28,16 @@ body {
 list-group-item {
 	background: red;
 }
+
+.jumbotron {
+height: 140px;
+}
+
+.marginfix {
+	margin-top: -40px;
+
+}
+
+p {
+	color: #7abcdf;	
+}
