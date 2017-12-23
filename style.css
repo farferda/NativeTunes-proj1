@@ -38,6 +38,22 @@ height: 140px;
 
 }
 
-p {
-	color: #7abcdf;	
+.container2 {
+text-align: center;
+}
+
+p{
+	color: #7abcdf;
+}
+
+h1{
+	color: #7abcdf;
+}
+
+#pop:hover {
+  animation: pop 3.0s linear 3;
+}
+
+@keyframes pop{
+  50%  {transform: scale(1.2);}
 }

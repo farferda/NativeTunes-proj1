@@ -10,7 +10,7 @@ var map = AmCharts.makeChart( "chartdiv", {
   },
   "areasSettings": {
     "autoZoom": true,
-    "selectedColor": "#CC0000"
+    "selectedColor": "#f1fbff"
   },
   "smallMap": {},
   "export": {
@@ -24,8 +24,10 @@ map.addListener("clickMapObject", function(event) {
   console.log(event);
   console.log(event.mapObject.id);
   console.log(event.mapObject.title)
-  document.getElementById("info").innerHTML = 'Clicked ID: ' 
-  + event.mapObject.id + ' (' + event.mapObject.title + ')';
+  document.getElementById("info").innerHTML = 'You Selected: ' 
+  + 
+  // event.mapObject.id + 
+   ' ' + event.mapObject.title + '';
 });
 
 //grab value of EN title 
