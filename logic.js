@@ -45,12 +45,19 @@ $.ajax({
     url: "https://api.spotify.com/v1/browse/categories/party/playlists?country=" + event.mapObject.id,
     method: "GET",
     headers: {
-      Authorization: "Bearer BQAuw1rJkS3d3dTTRylnj17vRvnMqpBxv7RjTSWyrfXTQc-CSeVxmTBWh2KEd4RnZIYIctovUBmWF-NV-elmaKsNb6BZdpEubreyviC8CGANQLMRJ8sZLoVcamIAB7dgrEJGGysDHio"
+      Authorization: "Bearer BQDJw5T6M2rX7mzIKTFUJQ-quwicttfQ8lddYPcdNtqTbsrDDB2cvSCiqvPd72hL9Ncg9EqJzVb-YDkR0ZaKqdg2bYJkweQXkKztYWxK80oBbQtRg9WGuX7lvZ7OdDK9ufcCe6ddjRU"
     }
   }).done(function(response) {
-    console.log(response),
-    console.log(response.playlists.items[Math.floor((Math.random() * 10) + 1)].id)
-    document.getElementById("randomID").innerHTML
+
+    var RandomNumber = Math.floor((Math.random() * 10) + 1);
+    var playlistTitle = response.playlists.items[RandomNumber].name;
+    console.log(response);
+    console.log(response.playlists.items[RandomNumber].id);
+    console.log(response.playlists.items[RandomNumber].name);
+
+    document.getElementById("playlistName").innerHTML = 'You are now listening to: ' 
+  + 
+   ' ' + playlistTitle + '';
   })
 
 
