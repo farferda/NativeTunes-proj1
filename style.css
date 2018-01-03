@@ -50,6 +50,10 @@ h1{
 	color: #7abcdf;
 }
 
+h2{
+	color: #7abcdf;
+}
+
 #pop:hover {
   animation: pop 3.0s linear 3;
 }
