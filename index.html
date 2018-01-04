@@ -1,69 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Native Tunes</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<script
-		src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous"></script>
-		
-	</head>
-	<body>
-		
-		
-		
-		<div class="container container1">
-			<img id="logo" src="images/NativeTunesLogo.png" height="28%" width="28%">
-		</div>
-		<br><br>
-		<div class="container">
-			<div class="jumbotron heightchange">
-				<div class="marginfix">
-					<p> Welcome to NativeTunes, a new application to help you find the top <strong>new</strong> music in your country!</p>
-					<p>Click on a country to get started:</p>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			
-			<script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-			<script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-			<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-			<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-			<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-			<div id="chartdiv"></div>
-			<br><br>
-			
-		</div>
-		<div class="container container2">
-			<div id="pop">
-				<h1><div id="info"></div></h1>
-			</div>
-		</div>
-		
-		<br>
-		<br>
-		<br>
-		<!-- <div class="container">
-			<div class="iframe">
-				<iframe src="https://open.spotify.com/user/spotify/playlist/2PXdUld4Ueio2pHcB6sM8j" width="1200" height="400" frameborder="0" allowtransparency="true"></iframe>
-			</div>
-		</div>
-		-->
-		<!-- <iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DWVcbzTgVpNRm" width="300" height="380" frameborder="0" allowtransparency="true"></iframe> -->
-		<div class="container">
+  <head>
+    <meta charset="UTF-8">
+    <title>Native Tunes</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 
-			<h2><div id="playlistName">Playlist Name</div></h2>
+    <script src="logic.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <img id="logo" src="images/NativeTunesLogo.png">
+    </div>
+    
+    <div class="container">
+      <div class="jumbotron">
+          <p> Welcome to NativeTunes, a new application to help you find the top <strong>new</strong> music in your country!</p>
+          <p>Click on a country to get started:</p>
+      </div>
+    </div>
 
-
-			<iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DX1N5uK98ms5p" width="1200" height="380" frameborder="0" allowtransparency="true"></iframe>
-		</div>
-		<br>
-		<iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DX8DBcbHcgPJw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-
-		<script src="logic.js"></script>
-	</body>
+    <!-- Map Chart -->
+    <div class="container">
+      <div id="chartdiv"></div>
+    </div>
+    
+    <!-- Spotify playlist -->
+    <div class="container">
+      <div id="country"></div>
+      <div id="playlistName">Playlist Name</div>
+      <div class="spotify-playlist-container">
+        <div class="message"></div>
+        <iframe
+        id="spotify-playlist"
+        class="isActive"
+        src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DX1N5uK98ms5p"
+        frameborder="0"
+        allowtransparency="true">
+      </iframe>
+      </div>
+    </div>
+  </body>
 </html>

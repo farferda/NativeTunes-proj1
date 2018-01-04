@@ -1,69 +1,75 @@
-var map = AmCharts.makeChart( "chartdiv", {
+const SpotifyAPIAuthorization = 'Bearer BQBhCTplUMk1Vn025VNtLPKxtJrI86f2hOtx3nYUhnXw3cnjtO84_wLnCb89OCYKKT_93imIuO3WvRR1lHQ4lwy3wAR8wTr3fBtKmEB7ftUKNUtLsvDA9RweL62zemz_MAk-X8HVh54';
+const SpotifyAPICountry = 'https://api.spotify.com/v1/browse/categories/party/playlists?country=';
+const SpotifyAPIPlaylist = 'https://open.spotify.com/embed/user/spotify/playlist/';
 
-  "type": "map",
-  "theme": "light",
-  "projection": "miller",
-
-  "dataProvider": {
-    "map": "worldLow",
-    "getAreasFromMap": true
-  },
-  "areasSettings": {
-    "autoZoom": true,
-    "selectedColor": "#f1fbff"
-  },
-  "smallMap": {},
-  "export": {
-    "enabled": true,
-    "position": "bottom-right"
+class Message {
+  static show(text) {
+    document.querySelector('#spotify-playlist').classList.remove('isActive');
+    document.querySelector('#playlistName').textContent = '';
+    const messageElement = document.querySelector('.message');
+    messageElement.textContent = text;
+    messageElement.classList.add('isActive');
   }
-} );
+  static hide() {
+    document.querySelector('.message').classList.remove('isActive');
+    document.querySelector('#spotify-playlist').classList.add('isActive');
+  }
+}
 
-
-map.addListener("clickMapObject", function(event) {
-  console.log(event);
-  console.log(event.mapObject.id);
-  console.log(event.mapObject.title)
-  document.getElementById("info").innerHTML = 'You Selected: ' 
-  + 
-  // event.mapObject.id + 
-   ' ' + event.mapObject.title + '';
-
-   // $.ajax({
-   //    url: "https://api.spotify.com/v1/browse/new-releases?country=" + event.mapObject.id,
-   //    method: "GET", 
-   //    headers: {
-   //      Authorization: "Bearer BQBCm_NfL6Xbmnmu7MX73ctEbsJ41uIWdAHWFR9UYIO3Smz1HJsAtubAgcrfWe9VuE2KfHSr3FrcSoeUz1T2msachaTQHRq8mJK72ggevQYFebJwygsfvg-nyMVzcr8JbsCSNax2qhw"
-   //    }
-   //  }).done(function(response) {
-   //    console.log(response.albums.items)
-
-   //  })
-
-
-$.ajax({
-    url: "https://api.spotify.com/v1/browse/categories/party/playlists?country=" + event.mapObject.id,
-    method: "GET",
-    headers: {
-      Authorization: "Bearer BQDJw5T6M2rX7mzIKTFUJQ-quwicttfQ8lddYPcdNtqTbsrDDB2cvSCiqvPd72hL9Ncg9EqJzVb-YDkR0ZaKqdg2bYJkweQXkKztYWxK80oBbQtRg9WGuX7lvZ7OdDK9ufcCe6ddjRU"
+function initializeChart() {
+  const map = AmCharts.makeChart('chartdiv', {
+    'type': 'map',
+    'theme': 'light',
+    'projection': 'miller',
+    'dataProvider': {
+      'map': 'worldLow',
+      'getAreasFromMap': true
+    },
+    'areasSettings': {
+      'autoZoom': true,
+      'selectedColor': '#f1fbff'
+    },
+    'smallMap': {},
+    'export': {
+      'enabled': true,
+      'position': 'bottom-right'
     }
-  }).done(function(response) {
+  });
+  map.addListener('clickMapObject', handleCountrySelection);
+}
+function handleCountrySelection(event) {
+  document.getElementById('country').textContent = (
+    `You selected: ${event.mapObject.title}`
+  );
 
-    var RandomNumber = Math.floor((Math.random() * 10) + 1);
-    var playlistTitle = response.playlists.items[RandomNumber].name;
-    console.log(response);
-    console.log(response.playlists.items[RandomNumber].id);
-    console.log(response.playlists.items[RandomNumber].name);
+  // Query Spotify
+  $.ajax({
+    url: SpotifyAPICountry + event.mapObject.id,
+    method: 'GET',
+    headers: {
+      Authorization: SpotifyAPIAuthorization
+    }
+  }).done(didReceiveSpotifyPlaylist).fail(error => {
+    if (error.status === 400) {
+      Message.show(`This country doesn't have Spotify.`);
+    }
+  });
+}
+function didReceiveSpotifyPlaylist(response) {
+  Message.hide();
+  console.log(response.playlists.items.length);
+  const randomNumber = Math.floor((Math.random() * 20) + 1);
+  const randomPlaylist = response.playlists.items[Math.floor((Math.random() * 20) + 1)];
+  const {name, id} = randomPlaylist;
 
-    document.getElementById("playlistName").innerHTML = 'You are now listening to: ' 
-  + 
-   ' ' + playlistTitle + '';
-  })
+  document.getElementById('playlistName').textContent = (
+    `You are now listening to: ${name}`
+  );
+  const spotifyPlaylist = document.querySelector('#spotify-playlist');
+  const nextSrc = SpotifyAPIPlaylist + id;
+  spotifyPlaylist.setAttribute('src', nextSrc);
+}
 
-
-});
-
-
-//grab value of EN title 
-// https://www.amcharts.com/kbase/?s=events&kbc=
-
+window.onload = () => {
+  initializeChart();
+};

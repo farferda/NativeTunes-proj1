@@ -1,63 +1,60 @@
-#chartdiv {
-  width: 100%;
-  height: 500px;
-}
-.navbar-default {
-
-	background-color: black;
-}
-
-#logo {
-	text-align: center;
-}
-
-.list-group-item active {
-	background-color: black;
-}
+/* Colorscheme https://flatuicolors.com/ */
 
 body {
-	background-image: url(images/ipbrick_header.png)
+  background-image: url(images/ipbrick_header.png)
 }
 
-.container1 {
-
-	text-align: center;
-	padding-top: 20px;
+#chartdiv {
+  width: 100%;
+  height: 300px;
+}
+.navbar-default {
+  background-color: black;
+}
+.list-group-item active {
+  background-color: black;
 }
 
-list-group-item {
-	background: red;
+.container {
+  text-align: center;
+  padding-top: 20px;
 }
+#logo {
+  width: 200px;
+  text-align: center;
+}
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Playlist */
+#country {
+  font-size: 24px;
+  color: #7abcdf;
+}
+#playlistName {
+  font-size: 20px;
+  color: #7abcdf;
+}
+.message {
+  display: none;
+  padding: 10px;
+  color: #ecf0f1;
+  background-color: #e74c3c;
+  font-size: 16px;
+}
+.message.isActive {display: block;}
+#spotify-playlist {
+  visibility: hidden;
+  width: 100%;
+  height: 400px;
+}
+#spotify-playlist.isActive {visibility: visible;}
 
 .jumbotron {
-height: 140px;
-}
-
-.marginfix {
-	margin-top: -40px;
-
-}
-
-.container2 {
-text-align: center;
-}
-
-p{
-	color: #7abcdf;
-}
-
-h1{
-	color: #7abcdf;
-}
-
-h2{
-	color: #7abcdf;
-}
-
-#pop:hover {
-  animation: pop 3.0s linear 3;
-}
-
-@keyframes pop{
-  50%  {transform: scale(1.2);}
+  height: 140px;
 }
