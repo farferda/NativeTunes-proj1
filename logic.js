@@ -1,4 +1,4 @@
-const SpotifyAPIAuthorization = 'Bearer BQBhCTplUMk1Vn025VNtLPKxtJrI86f2hOtx3nYUhnXw3cnjtO84_wLnCb89OCYKKT_93imIuO3WvRR1lHQ4lwy3wAR8wTr3fBtKmEB7ftUKNUtLsvDA9RweL62zemz_MAk-X8HVh54';
+const SpotifyAPIAuthorization = 'Bearer BQDgURxE7nGgcyGIQNseqD6ssMv0Y7tYbmBRch0VJQSfO7kOER1tGupcNcdJ87iWb55GN4FNrAvq9YbyUG-rLDK19SjVvfa7-WHJmeFpafoCZcADCwzdI6sG2RnueKjY1u75H08MAmQ';
 const SpotifyAPICountry = 'https://api.spotify.com/v1/browse/categories/party/playlists?country=';
 const SpotifyAPIPlaylist = 'https://open.spotify.com/embed/user/spotify/playlist/';
 
